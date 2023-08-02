@@ -17,7 +17,7 @@ jobs:
         run: zip -r deploy.zip . -x '*.git*'
  
       - name: Deploy to EB
-        uses: einaregilsson/beanstalk-deploy@v18
+        uses: einaregilsson/beanstalk-deploy@v21
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
@@ -25,5 +25,5 @@ jobs:
           environment_name: Udeymy-app-env
           existing_bucket_name: elasticbeanstalk-eu-central-1-925571753092
           region: eu-central-1
-          version_label: ${{ github.sha }}
+          version_label: 12345
           deployment_package: deploy.zip
