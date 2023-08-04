@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+const express = require("express");
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const app = express();
 
-export default App;
+const port = process.env.PORT || 3000;
+app.get("/", (req, res) => {
+  res.json({
+    success: true,
+    date: new Date(),
+    port,
+  });
+});
+
+app.listen(port, () => {
+  console.log(`SERVER STARTED AT: ${port}`);
+});
