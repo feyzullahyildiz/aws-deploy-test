@@ -6,6 +6,16 @@
 - Bir hata çıkmadığı takdirde deployment'a devam ediyor.
 - AWS
     - IAM ile bir kullanıcı oluşturduk ve access key ve secret key aldık
+    - Bir role oluşturmamız gerekiyor, eb oluştururken kullanacağız ellam
+        - Create A Role
+            - Trusted entity type: AWS Service
+            - Common use cases: EC2
+            - NEXT
+        - Select for
+            - AWSElasticBeanstalkWorkerTier
+            - AWSElasticBeanstalkMulticontainerDocker
+            - NEXT
+        - İsim ver, sonrasında eb için bunu kullan
     - Bu 2 değeri github'a secret olarak ekledi
         - proje/settings/secrets and variables/actions
     - Bir group oluşturdum ve admin permissionlarını verdim. Denemek için yaw
@@ -25,6 +35,10 @@
         - application name ve environment-name verdik
     - Bean stalk sonrası S3'de bir yer açıldı.
         - isminde elastic beanstalk ve region yazıyor. Bu isim önemli. deploy.yaml dosyasına ekleyeceğiz
+        - https://github.com/einaregilsson/beanstalk-deploy bunu kullanıyoruz
+        - User Roles Permissions. Bu Action'ın ihtiyacı olan izinler
+            - AWSElasticBeanstalkWebTier
+            - AWSElasticBeanstalkManagedUpdatesCustomerRolePolicy
 - Nasıl çalıştı
     - Docker ile aslında hiçbir işimiz olmadı, sadece test koştuk
     - S3'e öyle bir zip dosyası attık ki

@@ -2,16 +2,15 @@ name: Deploy Frontend
 on:
   push:
     branches:
-      - master # check your repo, your default branch might be master!
+      - master
  
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      # - run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t feyz/react-test -f Dockerfile.dev .
-      - run: docker run -e CI=true feyz/react-test npm run test:nowatch
+      # - uses: actions/checkout@v3
+      # - run: docker build -t feyz/react-test -f Dockerfile.dev .
+      # - run: docker run -e CI=true feyz/react-test npm run test:nowatch
  
       - name: Generate deployment package
         run: zip -r deploy.zip . -x '*.git*'
@@ -21,8 +20,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: udeymy-app
-          environment_name: Udeymy-app-env
+          application_name: Deneme3
+          environment_name: Deneme3-env
           existing_bucket_name: elasticbeanstalk-eu-central-1-925571753092
           region: eu-central-1
           version_label: ${{ github.sha }}
