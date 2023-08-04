@@ -1,11 +1,14 @@
-FROM node:alpine
-WORKDIR '/app'
-COPY package*.json ./
-RUN npm install
-COPY . .
+# FROM node:alpine
+# WORKDIR '/app'
+# COPY package*.json ./
+# RUN npm install
+# COPY . .
 
-ENV PORT=80
+# ENV PORT=80
 
+# EXPOSE 80
+
+# CMD [ "npm", "start" ]
+
+FROM nginx
 EXPOSE 80
-
-CMD [ "npm", "start" ]
